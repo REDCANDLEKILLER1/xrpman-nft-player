@@ -1,1 +1,0 @@
-# xrpman-nft-player
