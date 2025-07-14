@@ -1,0 +1,203 @@
+/* style.css - XRPMAN NFT Player */
+:root {
+  --neon-green: #00ff88;
+  --neon-blue: #00ccff;
+  --neon-purple: #cc00ff;
+  --dark-bg: #0a0a12;
+  --darker-bg: #050508;
+  --grid-color: rgba(0, 204, 255, 0.05);
+  --text-glow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--darker-bg);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cyber-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -1;
+}
+
+.cyber-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.35;
+  z-index: -1;
+}
+
+#app {
+  width: 95%;
+  max-width: 500px;
+  background: rgba(10, 10, 18, 0.85);
+  border: 1px solid var(--neon-green);
+  box-shadow: 0 0 15px var(--neon-green);
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(5px);
+}
+
+.cyber-header {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--neon-green);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.cyber-text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  color: var(--neon-green);
+  text-shadow: var(--text-glow);
+  letter-spacing: 3px;
+}
+
+.cyber-pulse {
+  animation: pulse 1.5s infinite alternate;
+  color: var(--neon-purple);
+  text-shadow: 0 0 5px var(--neon-purple), 0 0 10px var(--neon-purple);
+}
+
+@keyframes pulse {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+.player-container {
+  padding: 20px;
+}
+
+.nft-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.nft-frame {
+  border: 3px solid var(--neon-blue);
+  border-radius: 10px;
+  padding: 8px;
+  background: rgba(0, 0, 20, 0.5);
+  box-shadow: 0 0 10px var(--neon-blue);
+  margin-bottom: 15px;
+}
+
+.nft-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  object-fit: cover;
+  display: block;
+}
+
+.nft-info {
+  text-align: center;
+}
+
+.nft-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+  color: var(--neon-green);
+  text-shadow: var(--text-glow);
+}
+
+.token-id {
+  color: var(--neon-blue);
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+
+.visualizer-container {
+  width: 100%;
+  height: 120px;
+  margin: 20px 0;
+  border: 1px solid var(--neon-purple);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(20, 0, 30, 0.3);
+}
+
+#visualizer {
+  width: 100%;
+  height: 100%;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.cyber-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--dark-bg);
+  border: 2px solid var(--neon-green);
+  color: var(--neon-green);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px var(--neon-green);
+  transition: all 0.2s;
+}
+
+.cyber-button:hover {
+  background: var(--neon-green);
+  color: var(--dark-bg);
+  box-shadow: 0 0 20px var(--neon-green);
+}
+
+.cyber-button:active {
+  transform: scale(0.95);
+}
+
+.wallet-info {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid var(--neon-blue);
+  font-size: 0.8rem;
+  color: var(--neon-blue);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .cyber-text { font-size: 1.8rem; }
+  .nft-image { width: 150px; height: 150px; }
+  .cyber-button { width: 50px; height: 50px; font-size: 1.2rem; }
+}
